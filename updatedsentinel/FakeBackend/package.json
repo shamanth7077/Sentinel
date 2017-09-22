@@ -1,0 +1,18 @@
+{
+  "name": "sentinelmockbackend",
+  "version": "1.0.0",
+  "description": "fakebackend for sentinel application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nagaraj Nayak G",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "express-fileupload": "^0.1.3",
+    "fs": "0.0.1-security"
+  }
+}

@@ -1,0 +1,79 @@
+<div *ngIf="users.length > 0" >
+    <div id="display" class="ui segment">
+    <h1>Registered {{user}}s</h1>
+    <table class="ui celled padded blue table" *ngIf="user === 'Service Provider'">
+        <thead>
+        <tr>
+            <th class="center aligned">Name</th>
+            <th class="center aligned">Votes used</th>
+            <th class="center aligned">Votes available</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let user of users">
+            <td class="center aligned">
+                {{ user.name.toUpperCase() }}
+            </td>
+            <td class="center aligned">
+                {{ user.votingRightsUsed }}
+            </td>
+            <td class="center aligned">
+                {{ user.votingRightsMax }}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="ui celled padded blue table" *ngIf="user === 'Beneficial Owner'">
+        <thead>
+        <tr>
+            <th class="center aligned">Name</th>
+            <th class="center aligned">Total shares</th>
+            <th class="center aligned">Part for new Shares</th>
+            <th class="center aligned">Part for Dividend</th>
+            <th class="center aligned">Voted</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let user of users">
+            <td class="center aligned">
+                {{ user.name.toUpperCase() }}
+            </td>
+            <td class="center aligned">
+                {{ user.sharesTotal }}
+            </td>
+            <td class="center aligned">
+                {{ user.sharesChoice }}
+            </td>
+            <td class="center aligned">
+                {{ user.dividendChoice }}
+            </td>
+            <td class="center aligned" *ngIf="user.voted">
+                <i class="check square icon"></i>
+            </td>
+
+            <td class="center aligned" *ngIf="!user.voted">
+                <button class="ui button blue" (click)="vote(user)">
+                    Vote
+                </button>
+            </td>
+          
+        </tr>
+        </tbody>
+    </table>
+</div>
+    </div>
+
+<div *ngIf="users.length === 0" >
+    <div id="no-users" class="ui segment">
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="center aligned column">
+                <h1>No Registered {{user}}s</h1>
+            </div>
+        </div>
+    </div>
+</div>

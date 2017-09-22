@@ -1,0 +1,9 @@
+<search *ngIf="!COAF||!COAF2"></search>
+
+<user-list *ngIf="COAF && !voting" [type]="'sp'" [users]="users" (bo)="setVoter($event)"></user-list>
+
+<user-form *ngIf="COAF && !voting" [type]="'sp'" [status]="status" (refresh)="refresh($event)"></user-form>
+<stocksplitform *ngIf="COAF2" [type]="'sp'" [users]="users" [status2]="status2" (refresh)="refresh($event)"></stocksplitform>
+<split-form  *ngIf="COAF2" [type]="'sp'" [stocksplit]="stocksplit" [status2]="status2"  [COAF2]="COAF2"> </split-form>
+
+<bo-voting [bo]="bo" [COAF]="COAF" [dividend]="dividend" *ngIf="COAF && voting" (voting)="setVoting($event)"></bo-voting>

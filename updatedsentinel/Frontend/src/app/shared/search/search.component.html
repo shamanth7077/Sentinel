@@ -1,0 +1,17 @@
+<div class="coaf-form">
+    <form class="ui form">
+        <h2>Search existing contracts</h2>
+       <div>&nbsp;</div>
+        <div class="six wide field">
+            <input type="text" #coaf placeholder="Enter the COAF Reference">
+        </div>
+        <button class="ui button basic secondary" (click)="getDiv(coaf.value)">Search(dividendoption)</button>
+        <button class="ui button basic secondary" (click)="getstock(coaf.value)">Search(stocksplit)</button>
+        <div *ngIf="user === 0">
+            <div>&nbsp;</div>
+            <h2>Create new contract</h2>
+            <button class="ui button blue" routerLink="/create/dividend-option">New Dividend Option</button>
+            <button class="ui button blue" routerLink="/create/stocksplit" >New Stock Split</button>
+        </div>
+    </form>
+</div>

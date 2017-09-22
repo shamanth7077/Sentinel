@@ -1,0 +1,23 @@
+.coaf-form, #bo-form{
+  margin-top: 5em;
+  text-align:center;
+}
+
+.coaf-form button {
+  margin-top: 1em;
+}
+
+.coaf-form .field{
+  margin: auto !important;
+
+}
+
+#wallet-display {
+  /*margin-top: 5em;*/
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+#wallet-display h2 {
+  color: dodgerblue;
+}

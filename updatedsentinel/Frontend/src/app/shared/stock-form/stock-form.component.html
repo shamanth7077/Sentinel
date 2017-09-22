@@ -1,0 +1,147 @@
+<div class="form-container">
+    <form class="ui form centered grid">
+        <div class="row">
+            <div class="center aligned column">
+                <div></div>
+                <h1 *ngIf="type === 'read'">StockSplit Option Overview</h1>
+                <h1 *ngIf="type === 'update'">StockSplit Option Update</h1>
+                <h1 *ngIf="type === 'create'">StockSplit Option Create</h1>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="centered row">
+            <div class="six wide aligned column">
+                <h4>Event Details</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="six wide aligned column">
+                <div class="field">
+                    <label>COAF Reference:</label>
+                </div>
+            </div>
+            <div class="six wide aligned column">
+                <div class="field">
+                    <input type="text" [(ngModel)]="stocksplit.COAF" name="COAF_Reference" [disabled]="basic_disabled"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="six wide aligned column">
+                <div class="field">
+                    <label>Choice:</label>
+                </div>
+           </div>
+            <div class="six wide aligned column">
+               <div class="field" *ngIf="type !== 'create'">
+                    <input type="text" [(ngModel)]="stocksplit.Choice" name="Choice" [disabled]="basic_disabled"/>
+                </div>
+                <div class="field" *ngIf="type === 'create'">
+                    <select class="ui fluid search dropdown" name="Choice" [(ngModel)]="stocksplit.Choice">
+                        <option value=''>Select choice</option>
+                        <option value="MAND">MAND</option>
+                        <option value="VOLU">VOLU</option>
+                    </select>
+                </div>
+           </div>
+        </div>
+        <div class="row">
+            <div class="six wide aligned column">
+                <div class="field">
+                    <label>Information:</label>
+                </div>
+            </div>
+            <div class="six wide aligned column">
+                <div class="field" *ngIf="type !== 'create'">
+                    <input type="text" [(ngModel)]="stocksplit.Information" name="Information" [disabled]="basic_disabled"/>
+                </div>
+                <div class="field" *ngIf="type === 'create'">
+                    <select class="ui fluid search dropdown" name="Information" [(ngModel)]="stocksplit.Information">
+                        <option value=''>Select Information</option>
+                        <option value="COMP">COMP</option>
+                        <option value="COMU">COMU</option>
+                        <option value="ENTL">ENTL</option>
+                        <option value="PREC">PREC</option>
+                        <option value="PREU">PREU</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="six wide aligned column">
+                <div class="field">
+                    <label>ISIN:</label>
+                </div>
+            </div>
+            <div class="six wide aligned column">
+                <div class="field">
+                    <input type="text" [(ngModel)]="stocksplit.ISIN" name="ISIN" [disabled]="basic_disabled"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="six wide aligned column">
+                <div class="field">
+                    <label>Split Ratio: ( Note :This Field can only be initialised once a stocksplit is announced.)</label>
+                </div>
+            </div>
+            <div class="six wide aligned column">
+                <div class="field">
+                    <input type="number" [(ngModel)]="stocksplit.splitratio" name="splitratio"  [disabled]="disabled"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui divider" *ngIf="type !== 'create'"></div>
+        <div class="centered row" *ngIf="type !== 'create'">
+            <div class="six wide aligned column">
+                <h4>Status</h4>
+            </div>
+        </div>
+        <div class="row" *ngIf="type !== 'create'">
+            <div class="six wide aligned column">
+                <div class="field">
+                    <label>{{status2.StockSplitAnnounced ? 'Announced on' : 'Not yet announced'}}</label>
+                </div>
+            </div>
+            <div class="six wide aligned column" *ngIf="status2.StockSplitAnnounced">
+                <div class="field">
+                    <label>{{status2.announcedTime}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="type !== 'create'">
+            <div class="six wide aligned column">
+                <div class="field">
+                    <label>{{status2.StockSplitExecuted ? 'Executed on' : 'Not yet executed'}}</label>
+                </div>
+            </div>
+            <div class="six wide aligned column" *ngIf="status2.StockSplitExecuted">
+                <div class="field">
+                    <label>{{status2.executedTime}}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui divider"></div>
+            <div class="row" *ngIf="type === 'read'">
+                <div class="center aligned column">
+                    <button class="ui button red" type="submit" (click)="reset()">Back</button>&nbsp;&nbsp;
+                </div>
+            </div>
+            <div class="row" *ngIf="type === 'create'">
+                <div class="center aligned column">
+                    <button class="ui button red" type="submit"(click)="CreateStockSplit()">Create Smart Contract</button>&nbsp;&nbsp;
+                    <!--<button class="ui button red" (click)="reset()">Back</button>&nbsp;&nbsp;-->
+                    <button class="ui button red" routerLink="/home">Back</button>
+                </div>
+            </div>
+            <div class="row" *ngIf="type === 'update'">
+               <div class="center aligned column">
+                   <button class="ui button red" (click)="Announce()" [disabled]="status2.StockSplitAnnounced">Announce</button>&nbsp;&nbsp;
+                   <button class="ui button red" (click)="Execute()" [disabled]="!status2.StockSplitAnnounced || status2.StockSplitExecuted">Execute</button>&nbsp;&nbsp;
+                   <button class="ui button red" type="submit" (click)="UpdateStockSplit()" [disabled]="!status2.StockSplitAnnounced || status2.StockSplitExecuted">Update</button>&nbsp;&nbsp;
+                   <button class="ui button red" (click)="reset()">Back</button>&nbsp;&nbsp;
+               </div>
+           </div>
+    </form>
+</div>

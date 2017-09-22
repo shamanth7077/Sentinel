@@ -1,0 +1,54 @@
+<div id="form">
+    <form class="ui form centered grid">
+        <div class="row">
+            <div class="center aligned column">
+                <h1>Register {{user}}</h1>
+            </div>
+        </div>
+        <div class="row" *ngIf="type === 'csd'">
+            <div class="three wide column">
+                <div class="field">
+                    <input type="text" placeholder="{{user}} name" [(ngModel)]="newSP.name" name="sp-name">
+                </div>
+            </div>
+            <div class="three wide column">
+                <div class="field" >
+                    <input type="number" min="0" placeholder="Number of shares " [(ngModel)]="newSP.votes" name="sp-votes">
+                </div>
+            </div>
+            <div class="three wide column">
+                <div class="field" >
+                    <button class="ui button blue" (click)="create()">
+                        <i class="add user icon"></i>
+                        Register
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="type === 'sp'">
+            <div class="three wide column">
+                <div class="field">
+                    <input type="text" placeholder="{{user}} name" [(ngModel)]="newBO.name" name="bo-name">
+                </div>
+            </div>
+            <div class="three wide column">
+                <div class="field" >
+                    <input type="number" min="0" placeholder="Number of votes assigned" [(ngModel)]="newBO.sharesTotal" name="bo-shares">
+                </div>
+            </div>
+            <div class="three wide column">
+                <div class="field" >
+                    <button class="ui button blue" (click)="create()">
+                        <i class="add user icon"></i>
+                        Create
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="center aligned column">
+                <button class="ui button red" (click)="reset()">Back</button>
+            </div>
+        </div>
+    </form>
+</div>

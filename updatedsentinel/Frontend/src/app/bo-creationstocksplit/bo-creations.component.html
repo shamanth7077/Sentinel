@@ -1,0 +1,3 @@
+<search *ngIf="!COAF"></search>
+<stocksplitform *ngIf="COAF" [type]="'sp'" [users]="users" ></stocksplitform>
+<split-form *ngIf="COAF" [type]="'sp'" (refresh)="refresh($event)"></split-form>

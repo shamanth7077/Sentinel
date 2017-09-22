@@ -1,0 +1,3 @@
+<search *ngIf="!coaf" (stocksplit)="newSplit($event)" (coaf2)="newCoaf($event)" (status2)="newStatus($event)"></search>
+
+<stock-form *ngIf="coaf" [stocksplit]="stocksplit" [status2]="status" [type]="'update'" (coaf2)="newCoaf($event)"></stock-form>

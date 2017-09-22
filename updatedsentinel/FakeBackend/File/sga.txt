@@ -1,0 +1,40 @@
+powershell -file ServiceProxy.ps1 -version 00 -name MN_BYRPYM_LST -output C:\TFS\WebService\WebApp\BN.DynamicPay.Buyer.WebApp.Data\Supplier -datatypesonly true -entity list.supplierpayment
+getBuyerPayments?payOutStartDate=20161201&payOutEndDate=20170401
+getBuyerPayments?buyerAccount=DK65%203000%203001%203371%2022&paymentStatus=booked&payOutStartDate=20161201&payOutEndDate=20170401
+powershell -file ServiceProxy.ps1 -version 00 -name MN_BYRDSR_LST -output C:\TFS\WebService\WebApp\BN.DynamicPay.Buyer.WebApp.Data\Supplier -datatypesonly true -entity Supplier
+100935243482
+
+MN_BYRDSR_LSTResponseMN_BYRDSR_LSTResult
+MN_BYRDSR_LSTResponseMN_BYRDSR_LSTResult
+
+
+MN_BYRPYM_LSTResponseMN_BYRPYM_LSTResult
+
+powershell -file ServiceProxy.ps1 -version 00 -name MN_SUPDSR_LST -output C:\TFS\WebService\WebApp\BN.DynamicPay.Buyer.WebApp.Data\Supplier -datatypesonly true -entity Supplier
+
+
+http://localhost:60279/BN2/api/DynamicPayBuyer/getSupplierRates
+http://localhost:60279/BN2/api/DynamicPayBuyer/getBuyers
+http://localhost:60279/BN2/api/DynamicPayBuyer/getreferencerates?country=DK&currency=DKK
+http://localhost:60279/BN2/api/DynamicPayBuyer/getBuyerRates?buyerID=086E000000007986&actionCode=LST_BYBO
+http://localhost:60279/BN2/api/DynamicPayBuyer/getBuyerPayments?buyerAccount=%20&paymentStatus=%20&payOutStartDate=20161201&payOutEndDate=20170401
+
+MN_BYRDSR_LST
+MN_BYRPYM_LST
+
+
+C:\Users\bc3997\Source\Repos\DynamicPayBuyer
+
+
+
+
+
+   at DanskeBankGroup.Gemini.Facade.Service`2.Invoke(String operation)
+  
+ at BN.DynamicPay.Buyer.WebApp.Data.Supplier.SupplierSI.GetBuyers(String boAgreement, String userId, String language) in C:\TFS\WebService\WebApp\BN.DynamicPay.Buyer.WebApp.Data\Supplier\SupplierSI.cs:line 252
+
+
+http://test-business2.danskebank.com/BN2/api/DynamicPayBuyer/getbuyers
+
+parent.logo.document.getElementById('indhold').style.height = parent.logo.document.getElementById('indhold').contentWindow.document.body.scrollHeight+"px!important";
+var height = parent.logo.document.getElementById('indhold').contentWindow.document.body.scrollHeight +200;

@@ -1,0 +1,64 @@
+<!--<div class="coaf-form">-->
+  <!--<form class="ui form">-->
+    <!--<div class="six wide field">-->
+      <!--<input type="text" #coaf placeholder="Enter the COAF Reference">-->
+    <!--</div>-->
+    <!--<button class="ui button basic secondary" (click)="getInfo(coaf.value)">Search</button>-->
+  <!--</form>-->
+<!--</div>-->
+
+<!--<div id="wallet-display" class="ui segment">-->
+  <!--<h4>Shares owned: {{bo.sharesTotal}}</h4>-->
+  <!--<h4>Dividend: {{bo.dividendChoice}}</h4>-->
+  <!--<h4>Shares: {{bo.sharesChoice}}</h4>-->
+<!--</div>-->
+
+<div id="bo-form">
+  <form class="ui form centered grid">
+    <div class="row">
+      <div class="center aligned column">
+        <h1>{{bo.name.toUpperCase()}} Voting</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="center aligned column">
+        <div id="wallet-display" class="ui segment">
+          <h2>Total Shares Owned</h2>
+          <h3>{{bo.sharesTotal}}</h3>
+          <div class="ui divider"></div>
+          <div *ngIf="!default">
+            <h2>Dividend</h2>
+            <p>(@ ${{dividend.divPerShare}} / share)</p>
+            <h3>{{bo.dividendChoice}} shares -> ${{bo.dividendChoice * dividend.divPerShare}}</h3>
+            <div class="ui divider"></div>
+            <h2>New Shares</h2>
+            <p>(@ {{dividend.getShares}} shares / {{dividend.holdShares}} shares)</p>
+            <h3>{{(bo.sharesChoice)}} shares -> {{bo.sharesChoice * dividend.getShares / dividend.holdShares}} new shares</h3>
+          </div>
+          <div *ngIf="default">
+            <h2>Dividend</h2>
+            <p>(@ ${{dividend.divPerShare}} / share)</p>
+            <h3>{{bo.dividendChoice}} shares -> ${{bo.dividendChoice * dividend.divPerShare}}</h3>
+            <div class="ui divider"></div>
+            <h2 style="color: red">New Shares</h2>
+            <p style="color: red">Not enough shares to choose this option</p>
+           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="!default">
+      <div class="six wide center aligned column">
+        <div class="field">
+          <input type="range" [step]="sliderStep" name="sliderInput"
+          (ngModelChange)="onSliderChange($event)" [(ngModel)]="slider" min="0" [max]="sliderMax" >
+        </div>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+    <div class="row">
+      <div class="center aligned column">
+        <button class="ui button red" type="submit"(click)="submitBoVote()" [disabled]="bo.voted">Submit vote</button>
+      </div>
+    </div>
+  </form>
+</div>

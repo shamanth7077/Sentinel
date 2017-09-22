@@ -1,0 +1,3 @@
+<search *ngIf="!coaf" (dividend)="newDiv($event)" (coaf)="newCoaf($event)" (status)="newStatus($event)"></search>
+
+<div-form *ngIf="coaf " [dividend]="dividend" [status]="status" [type]="'update'" (coaf)="newCoaf($event)"></div-form>

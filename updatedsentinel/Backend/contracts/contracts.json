@@ -1,0 +1,17 @@
+{
+    "dividend": {
+        "name": "DividendOptionContract",
+        "argc": "5",
+        "version": "2.0"
+    },
+    "split": {
+        "name": "StockSplitContract",
+        "argc": "5",
+        "version": "2.0"
+    },
+    "test":{
+        "name": "TestContract",
+        "argc": "3",
+        "version": "1.0"
+    }
+}

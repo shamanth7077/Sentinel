@@ -1,0 +1,25 @@
+<!--<search *ngIf="!COAF"></search> -->
+
+<search *ngIf="!COAF|| !COAF2" (status)="newStatus($event)" (status2)="newStatus2($event)"></search>
+<user-form *ngIf="COAF && !registered" [type]="'csd'" [dividend]="dividend" [status]="status"[COAF]="COAF"></user-form>
+<split-form  *ngIf="COAF2 && !registered2" [type]="'csd'" [stocksplit]="stocksplit" [status2]="status2"  [COAF2]="COAF2"> </split-form>
+<div id="form" *ngIf="registered">
+    <form class="ui form centered grid">
+        <div class="row">
+            <div class="center aligned column">
+                <h1>Node is assigned to Service Provider</h1>
+                <h1>'{{ name.toUpperCase() }}'</h1>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="form" *ngIf="registered2">
+    <form class="ui form centered grid">
+        <div class="row">
+            <div class="center aligned column">
+                <h1>Node is assigned to Service Provider</h1>
+                <h1>'{{ name.toUpperCase() }}'</h1>
+            </div>
+        </div>
+    </form>
+</div>
